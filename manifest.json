@@ -1,0 +1,13 @@
+{
+	"manifest_version": 2,
+	"name": "replace-emojis",
+	"version": "1.0",
+
+	"content_scripts": [
+		{
+			"matches": ["https://www.messenger.com/t/*"],
+			"js": ["replace-emojis.js"]
+		}
+	]
+
+}
