@@ -1,14 +1,19 @@
 
 function getMessages() {
 	setTimeout(function() {
-		var par = document.getElementsByClassName("__i_ _7i2k");
-		if (par.length) {
-			var messages = par[0].children[2];
-			main(messages)
-		}
-		else {
-			getMessages();
-		}
+        try {
+            var par = document.getElementsByClassName("__i_ _7i2k");
+            if (par.length) {
+                var messages = par[0].children[2];
+                main(messages)
+            }
+            else {
+                getMessages();
+            }
+        }
+        catch (error) {
+            console.log(error);
+        }
 	}, 500);
 }
 

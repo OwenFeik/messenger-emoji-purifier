@@ -5,7 +5,7 @@
 
 	"content_scripts": [
 		{
-			"matches": ["https://www.messenger.com/t/*"],
+			"matches": ["https://www.messenger.com/*"],
 			"js": ["replace-emojis.js"]
 		}
 	]
