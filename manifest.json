@@ -1,12 +1,12 @@
 {
 	"manifest_version": 2,
-	"name": "replace-emojis",
+	"name": "messenger-emoji-purifier",
 	"version": "1.0",
 
 	"content_scripts": [
 		{
 			"matches": ["https://www.messenger.com/*"],
-			"js": ["replace-emojis.js"]
+			"js": ["purify-emojis.js"]
 		}
 	]
 
