@@ -29,16 +29,37 @@ function checkPageChange(observer) {
     }, 500, observer);
 }
 
+function getStyle(child) {
+    function get(c) {
+        try {
+            return c.children[0].getAttribute('style');
+        }
+        catch {
+            return '';
+        }
+    }
+
+    sib = child.parentNode.children[1];
+    do {
+        var bbl_style = get(sib);
+        if (bbl_style) {
+            return bbl_style;
+        }
+    } while (sib = sib.nextSibling);
+
+    return '';
+}
+
 function purify(child) {
     try {
         if (child.getAttribute("class").includes("clearfix _o46 _3erg")) {
-            console.log(child);
+
             var bbl = child.children[0];
             var msg = bbl.children[1];
             if (child.innerHTML.includes('<img') && child.innerHTML.includes('src="https://static.xx.fbcdn.net/images/emoji.php/')) {
                 text = msg.getAttribute('aria-label');
                 if (text) {
-                    // child.setAttribute('class', 'clearfix _o46 _3erg _3i_m _nd_ _8lma direction_ltr text_align_ltr');
+                    bbl.setAttribute('style', getStyle(child));
                     if (bbl.getAttribute('class').includes('_43by _6ybp')) {
                         bbl.setAttribute('class', '_3058 _ui9 _hh7 _6ybn _s1- _52mr _43by _6ybp _3oh-');
                     }
