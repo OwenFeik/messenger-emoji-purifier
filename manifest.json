@@ -2,7 +2,7 @@
 	"manifest_version": 2,
     "name": "messenger-emoji-purifier",
     "description": "Undoes Facebook Messenger's conversion of emoticons into emoji.",
-	"version": "1.0",
+	"version": "1.01",
 
 	"content_scripts": [
 		{

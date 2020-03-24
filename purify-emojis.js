@@ -23,7 +23,6 @@ function checkPageChange(observer) {
         if (url != window.location.href) {
             ob.disconnect();
             getMessages();
-            console.log("Updated page.");
         }
         checkPageChange(ob);
     }, 500, observer);
@@ -50,12 +49,31 @@ function getStyle(child) {
     return '';
 }
 
+function getElements(child) {
+    var bbl = child.firstChild;
+    do {
+        if (bbl.getAttribute('class').includes('_3058 _ui9 _hh7 _6ybn _s1- _52mr')) {
+            break;
+        }
+    } while (bbl = bbl.nextSibling);
+
+    var msg = bbl.firstChild;
+    do {
+        if (msg.getAttribute('class').includes('_aok _7i2m')) {
+            break;
+        }
+    } while (msg = msg.nextSibling);
+
+    console.log(bbl);
+    console.log(msg);
+    return [bbl, msg];
+}
+
 function purify(child) {
     try {
-        if (child.getAttribute("class").includes("clearfix _o46 _3erg")) {
-
-            var bbl = child.children[0];
-            var msg = bbl.children[1];
+        if (child.getAttribute('class').includes('clearfix _o46 _3erg')) {
+            var bbl, msg;
+            [bbl, msg] = getElements(child);
             if (child.innerHTML.includes('<img') && child.innerHTML.includes('src="https://static.xx.fbcdn.net/images/emoji.php/')) {
                 text = msg.getAttribute('aria-label');
                 if (text) {
